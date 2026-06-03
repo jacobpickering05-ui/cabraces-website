@@ -1,21 +1,30 @@
 /* ============================================
    BASE.CSS — Variables, Reset, Typography
    California Braces
+   Palette 02: Clinical White & Emerald
    ============================================ */
 
 :root {
-  --black:      #080B10;
-  --dark:       #0D1117;
-  --dark-2:     #141A24;
-  --dark-3:     #1C2333;
-  --cream:      #F5F0E8;
-  --cream-2:    #EDE5D8;
-  --gold:       #C8A96E;
-  --gold-2:     #E2C98A;
-  --gold-3:     #F0DFB0;
-  --white:      #FFFFFF;
-  --text-muted: rgba(245,240,232,0.5);
-  --text-dim:   rgba(245,240,232,0.3);
+  /* ── PALETTE 02: Clinical White & Emerald ── */
+  --white:       #FFFFFF;
+  --off-white:   #F0F7FF;
+  --surface:     #E8F5EE;
+  --surface-2:   #F5F9FF;
+  --navy:        #0A2540;
+  --navy-2:      #0D2E4A;
+  --navy-3:      #112E50;
+  --emerald:     #00A86B;
+  --emerald-2:   #00BF7A;
+  --emerald-3:   #33CC8A;
+  --emerald-pale:#D4F5E9;
+  --text:        #0A2540;
+  --text-2:      #2C4A63;
+  --text-muted:  rgba(10,37,64,0.55);
+  --text-dim:    rgba(10,37,64,0.35);
+  --border:      rgba(10,37,64,0.08);
+  --border-2:    rgba(10,37,64,0.14);
+
+  /* ── TYPOGRAPHY ── */
   --serif: 'Cormorant Garamond', Georgia, serif;
   --sans:  'Outfit', system-ui, sans-serif;
   --ease:  cubic-bezier(0.16, 1, 0.3, 1);
@@ -31,8 +40,8 @@ html { scroll-behavior: smooth; }
 
 body {
   font-family: var(--sans);
-  background: var(--black);
-  color: var(--cream);
+  background: var(--white);
+  color: var(--text);
   overflow-x: hidden;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -54,10 +63,10 @@ a { text-decoration: none; color: inherit; }
   gap: 10px;
   font-family: var(--sans);
   font-size: 0.65rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--emerald);
   margin-bottom: 16px;
 }
 
@@ -66,28 +75,28 @@ a { text-decoration: none; color: inherit; }
   display: block;
   width: 28px;
   height: 1px;
-  background: var(--gold);
+  background: var(--emerald);
   flex-shrink: 0;
 }
 
 /* ── SECTION HEADLINES ── */
 .section-h {
   font-family: var(--serif);
-  font-size: clamp(2.8rem, 4.5vw, 5rem);
+  font-size: clamp(2.6rem, 4vw, 4.8rem);
   font-weight: 400;
   line-height: 1.05;
-  color: var(--cream);
+  color: var(--navy);
   letter-spacing: -0.01em;
 }
 
 .section-h em {
   font-style: italic;
-  color: var(--gold-2);
+  color: var(--emerald);
 }
 
-.section-h.dark {
-  color: var(--dark);
-}
+/* White variant for dark sections */
+.section-h.light { color: var(--white); }
+.section-h.light em { color: var(--emerald-3); }
 
 .section-p {
   font-size: 1rem;
@@ -97,21 +106,19 @@ a { text-decoration: none; color: inherit; }
   max-width: 500px;
 }
 
-.section-p.dark {
-  color: rgba(13,17,23,0.6);
-}
+.section-p.light { color: rgba(255,255,255,0.6); }
 
 /* ── BUTTONS ── */
 .btn-primary {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  background: var(--gold);
-  color: var(--dark);
+  background: var(--emerald);
+  color: var(--white);
   font-family: var(--sans);
   font-size: 0.75rem;
   font-weight: 600;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   padding: 18px 38px;
   border-radius: 2px;
@@ -122,9 +129,9 @@ a { text-decoration: none; color: inherit; }
 }
 
 .btn-primary:hover {
-  background: var(--gold-2);
+  background: var(--emerald-2);
   transform: translateY(-2px);
-  box-shadow: 0 16px 40px rgba(200,169,110,0.3);
+  box-shadow: 0 16px 40px rgba(0,168,107,0.3);
 }
 
 .btn-outline {
@@ -132,29 +139,40 @@ a { text-decoration: none; color: inherit; }
   align-items: center;
   gap: 10px;
   background: transparent;
-  color: var(--cream);
+  color: var(--navy);
   font-family: var(--sans);
   font-size: 0.75rem;
   font-weight: 500;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   padding: 17px 38px;
   border-radius: 2px;
-  border: 1px solid rgba(245,240,232,0.2);
+  border: 1px solid var(--border-2);
   cursor: pointer;
   transition: all 0.3s var(--ease);
   white-space: nowrap;
 }
 
 .btn-outline:hover {
-  border-color: var(--gold);
-  color: var(--gold);
+  border-color: var(--emerald);
+  color: var(--emerald);
+}
+
+/* White outline variant for hero */
+.btn-outline.light {
+  color: var(--white);
+  border-color: rgba(255,255,255,0.3);
+}
+
+.btn-outline.light:hover {
+  border-color: var(--emerald-3);
+  color: var(--emerald-3);
 }
 
 /* ── SCROLL REVEAL ── */
 .rv {
   opacity: 0;
-  transform: translateY(40px);
+  transform: translateY(36px);
   transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
 }
 
